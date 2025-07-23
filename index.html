@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Love Bombs | First Milady Based Token on Alkanes</title>
+    <meta name="title" content="Love Bombs | Alkanes on Bitcoin" />
+    <meta name="description" content="Mint 1000 free Love Bomb alkane tokens on Bitcoin! Experience the future of Bitcoin with alkanes protocol. Connect your wallet and start minting now." />
+    <meta name="keywords" content="Bitcoin, Alkanes, Love Bombs, Cryptocurrency, Tokens, Minting, Oylnet, Blockchain, Free Tokens" />
+    <meta name="author" content="Love Bombs" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lovebombs.lol" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lovebombs.lol" />
+    <meta property="og:title" content="Love Bombs | First Milady Token on Alkanes" />
+    <meta property="og:description" content="Mint 1000 free Love Bomb Alkane tokens on Bitcoin! Experience the future of Bitcoin with Alkanes. Connect your wallet and start minting now." />
+    <meta property="og:image" content="https://lovebombs.lol/okay.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Love Bombs - Bitcoin Alkane Tokens" />
+    <meta property="og:site_name" content="Love Bombs" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://lovebombs.lol" />
+    <meta property="twitter:title" content="Love Bombs | First Milady Token On Alkanes" />
+    <meta property="twitter:description" content="Mint 1000 free Love Bomb alkane tokens on Bitcoin! Experience the future of Bitcoin with alkanes protocol. Connect your wallet and start minting now." />
+    <meta property="twitter:image" content="https://lovebombs.lol/okay.png" />
+    <meta property="twitter:image:alt" content="Love Bombs - Bitcoin Alkane Tokens" />
+    <meta property="twitter:creator" content="@miladylovebombs" />
+    <meta property="twitter:site" content="@miladylovebombs" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#FF4500" />
+    <meta name="msapplication-TileColor" content="#FF4500" />
+    <meta name="application-name" content="Love Bombs" />
+    <meta name="apple-mobile-web-app-title" content="Love Bombs" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Love Bombs",
+      "description": "Mint 1000 free Love Bomb alkane tokens on Bitcoin using the alkanes metaprotocol",
+      "url": "https://lovebombs.lol",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free Love Bomb token minting"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Love Bombs"
+      }
+    }
+    </script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: transparent !important;
+        overflow-x: hidden;
+      }
+      
+      #bg-video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1000;
+        overflow: hidden;
+        background: #000;
+      }
+      
+      #bg-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Hide video controls on mobile */
+      #bg-video::-webkit-media-controls {
+        display: none !important;
+      }
+      
+      #root {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Fallback background for video loading */
+      .video-fallback {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg-video-container">
+      <div class="video-fallback"></div>
+      <video 
+        id="bg-video" 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        defaultMuted 
+        preload="auto"
+        webkit-playsinline
+      >
+        <source src="/background.mp4" type="video/mp4">
+      </video>
+    </div>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      // Enhanced video autoplay handling
+      document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('bg-video');
+        const container = document.getElementById('bg-video-container');
+        
+        // Function to handle video play
+        function playVideo() {
+          const playPromise = video.play();
+          
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                // Video started playing successfully
+                video.style.opacity = 1;
+              })
+              .catch(error => {
+                console.warn("Video autoplay failed:", error);
+                // Add click-to-play for iOS
+                container.addEventListener('click', () => {
+                  video.play();
+                }, { once: true });
+              });
+          }
+        }
+
+        // Try to play video immediately
+        playVideo();
+
+        // Handle page visibility changes
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') {
+            playVideo();
+          }
+        });
+
+        // Handle mobile touch events
+        document.addEventListener('touchstart', () => {
+          playVideo();
+        }, { once: true });
+
+        // Handle mobile scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(playVideo, 150);
+        }, { passive: true });
+      });
+    </script>
+  </body>
+</html>
